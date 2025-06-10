@@ -1,0 +1,72 @@
+<?php
+// Function to send robot arm command
+function sendCommand($action) {
+    $robotIP = "192.168.1.100"; // Replace with your robot's IP address
+    $command = array("arm_action" => $action);
+    
+    $ch = curl_init("http://$robotIP/control");
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($command));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    return $response;
+}
+
+// Handling form submission
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $action = $_POST["action"];
+    echo sendCommand($action);
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Robot Arm Controller</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .button {
+            padding: 15px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Robot Arm Controller</h2>
+    <p>Select an action:</p>
+
+    <form method="post">
+        <div class="button-container">
+            <button class="button" type="submit" name="action" value="up">Move Up</button>
+            <button class="button" type="submit" name="action" value="down">Move Down</button>
+            <button class="button" type="submit" name="action" value="left">Move Left</button>
+            <button class="button" type="submit" name="action" value="right">Move Right</button>
+            <button class="button" type="submit" name="action" value="open">Open Grip</button>
+            <button class="button" type="submit" name="action" value="close">Close Grip</button>
+        </div>
+    </form>
+
+</body>
+</html>

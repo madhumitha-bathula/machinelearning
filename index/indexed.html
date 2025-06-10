@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Robot Controller</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .button {
+            padding: 20px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Robot Controller</h2>
+    <p>Select an option:</p>
+
+    <div class="container">
+        <button class="button" onclick="window.location.href='arm_control.html'">Arm Controller</button>
+        <button class="button" onclick="window.location.href='movement_control.html'">Movement</button>
+    </div>
+
+</body>
+</html>
