@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Window Object Example</title>
+    <script>
+        function showAlert() {
+            window.alert("This is an alert box!");
+        }
+
+        function openNewWindow() {
+            window.open("https://www.example.com", "_blank");
+        }
+
+        function getWindowDimensions() {
+            let width = window.innerWidth;
+            let height = window.innerHeight;
+            document.getElementById("dimensions").innerHTML = 
+                "Width: " + width + "px, Height: " + height + "px";
+        }
+
+        function closeWindow() {
+            window.close();
+        }
+    </script>
+</head>
+<body>
+<div class="video-container">
+<video autoplay loop muted>
+<source src="C:\Users\siree\Downloads\video.mp4" type="video/mp4">
+your browser does not support video tag.
+</div>
+<body onload="getWindowDimensions()">
+    <h1>Window Object Example</h1>
+    <button onclick="showAlert()">Show Alert</button>
+    <button onclick="openNewWindow()">Open New Window</button>
+    <button onclick="getWindowDimensions()">Get Window Dimensions</button>
+    <button onclick="closeWindow()">Close Window</button>
+    <p id="dimensions"></p>
+</body>
+</html>
